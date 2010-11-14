@@ -1,3 +1,20 @@
+# BigPicture.py
+#
+# A Python script to download the latest image from Boston Big Picture's RSS.
+# I use it from a launchd job to set the wallpaper on my Mac ;) 
+#
+# Requires:
+# Universal Feed Parser (http://www.feedparser.org/)
+# 	for RSS fetch & parse
+# BeautifulSoup (http://www.crummy.com/software/BeautifulSoup/)
+#	for parsing HTML in the RSS feed
+# GrowlPython (http://growl.info/documentation/developer/python-support.php)
+#	for notifying the user of a new download
+#	(easy enough to remove on non-Jobs platfroms)
+#
+# Author:
+#	Henry Cooke (me@prehensile.co.uk)
+
 import feedparser
 import urllib2
 from BeautifulSoup import BeautifulSoup
