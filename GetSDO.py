@@ -15,21 +15,32 @@ import feedparser
 import urllib2
 
 import os
-import time
+import datetime
 
 # Testing
 import pdb
 
 
-# Config
+# Feed Config
 fdir = '/Users/jonh/Pictures/sdo-feed/'
 sdo_rss_root = 'http://feeds.feedburner.com/nasa/'
-sdo_rss_views = ['aia_094', 'aia_131', 'aia_171', 'aia_193', 'aia_211', 'aia_304', 'aia_335', 'aia_1600', 'aia_1700', 'COMP094335193', 'COMP211193171', 'COMP304211171', 'COMPHMI171', 'hmib', 'hmibc', 'hmii', 'hmiic'] # hmid & f was offline at time of writing
+sdo_rss_views = ['aia_131', 'aia_171', 'aia_193', 'aia_211', 'aia_304', 'aia_335'] # Pretty ones only
+
+# sdo_rss_views = ['aia_094', 'aia_131', 'aia_171', 'aia_193', 'aia_211', 'aia_304', 'aia_335', 'aia_1600', 'aia_1700', 'COMP094335193', 'COMP211193171', 'COMP304211171', 'COMPHMI171', 'hmib', 'hmibc', 'hmii', 'hmiic'] # ALL - hmid & f was offline at time of writing
+
+# File and date config
+today = datetime.date.today().strftime("%Y%m%d")
+purgeday = (datetime.date.today() - datetime.timedelta(days=8)).strftime("%Y%m%d")
+sdofiles = [f for f in os.listdir(fdir) if os.path.isfile(os.path.join(fdir, f))]
+sdofiles.remove('.DS_Store')
+
+
+# @TODO: Get one for each day (multiple hours for each day not much use to me)
+# @TODO: Run automatically (launchd / os x scripting?)
+# @TODO: Optimize: Pretty sure I could merge some of these loops
 
 # Parse RSS
-
 # Get first image from each seperate type
-
 for view in sdo_rss_views:
     sdo_rss = sdo_rss_root + view + '?format=xml'
     feed = feedparser.parse( sdo_rss )
@@ -42,15 +53,23 @@ for view in sdo_rss_views:
             fname = view + '_' + url.split('/')[-1] # Feed images use same name, hence prefix
             fout = fdir+fname
             # @TODO: Don't download again if it exisits
-            output = open( fout, 'wb' )
-            output.write( data )
-            output.close()
-            print 'File downloaded: ', fname
+            if fname not in sdofiles:
+                output = open( fout, 'wb' )
+                output.write( data )
+                output.close()
+                print 'File downloaded: ', fname
+            else:
+                print 'File skipped: ', fname
     except:
             print 'URL error: ', url
             pass
 
 # @TODO: Remove anything older than one week
+# for sdofile in sdofiles:
+#     if sdofile.split('_')[2]
+# Needs some comparison. Almost there.
+
+
 
 # DEPRECATED - I want one a day (not enough changes hourly)
 # Get all images from feed - RSS shows last 5 hours or so in 15 min intervals.
