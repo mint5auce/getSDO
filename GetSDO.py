@@ -1,9 +1,11 @@
 # GetSDO.py
 #
-# A Python script to download the latest image from NASA's Solar Dynamics
+# A basic Python script to download the latest image from NASA's Solar Dynamics
 # Observatory RSS feed.
 #
 # I use it to set the screensaver image source on my Mac
+#
+# More 'advanced' development will continue at: https://github.com/mint5auce/getSDO
 #
 # Requires: Universal Feed Parser (https://github.com/kurtmckee/feedparser
 # / https://pythonhosted.org/feedparser/)
