@@ -4,8 +4,7 @@
 # Observatory RSS feed.
 #
 # I use it to set the screensaver image source on my Mac. You can run it autom-
-# matically via launchd (CLI) or Automator (GUI), or even better LaunchControl:
-# http://www.soma-zone.com/LaunchControl/
+# matically via launchd/LaunchControl: http://nathangrigg.net/2012/07/schedule-jobs-using-launchd/
 #
 # More 'advanced' development will continue at: https://github.com/mint5auce/getSDO
 #
