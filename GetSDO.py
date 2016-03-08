@@ -3,7 +3,9 @@
 # A basic Python script to download the latest image from NASA's Solar Dynamics
 # Observatory RSS feed.
 #
-# I use it to set the screensaver image source on my Mac
+# I use it to set the screensaver image source on my Mac. You can run it autom-
+# matically via launchd (CLI) or Automator (GUI), or even better LaunchControl:
+# http://www.soma-zone.com/LaunchControl/
 #
 # More 'advanced' development will continue at: https://github.com/mint5auce/getSDO
 #
