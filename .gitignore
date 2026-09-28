@@ -1,2 +1,7 @@
-
+.DS_Store
+._*
 aia_193.xml
+*.py[cod]
+__pycache__/
+.venv/
+.ruff_cache/
