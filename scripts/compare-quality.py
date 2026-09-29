@@ -5,12 +5,16 @@ import argparse
 import hashlib
 import json
 import math
+import sys
 from pathlib import Path
 
 import numpy as np
 from astropy.io import fits
 from PIL import Image
 from scipy.ndimage import gaussian_filter, map_coordinates
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scene_store import SUPPORT
 
 
 def linear(rgb):
@@ -130,7 +134,7 @@ def main():
     parser.add_argument(
         "--scene",
         type=Path,
-        default=Path.home() / "Library/Application Support/getSDO/scene.json",
+        default=SUPPORT / "scene.json",
     )
     parser.add_argument("--output", type=Path, default=Path("build/quality-comparison"))
     args = parser.parse_args()

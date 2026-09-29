@@ -7,6 +7,25 @@ import ScreenSaver
 }
 @main struct Validate {
   static func main() throws {
+    let storageHome = FileManager.default.temporaryDirectory.appendingPathComponent(
+      UUID().uuidString)
+    defer { try? FileManager.default.removeItem(at: storageHome) }
+    let current = storageHome.appendingPathComponent(
+      "Library/Application Support/Solar Horizon", isDirectory: true)
+    let legacy = storageHome.appendingPathComponent(
+      "Library/Application Support/getSDO", isDirectory: true)
+    precondition(solarSupportDirectory(home: storageHome) == current)
+    try FileManager.default.createDirectory(at: legacy, withIntermediateDirectories: true)
+    let savedScene = legacy.appendingPathComponent("scene.json")
+    let savedBytes = Data("saved scene".utf8)
+    try savedBytes.write(to: savedScene)
+    precondition(solarSupportDirectory(home: storageHome) == legacy)
+    precondition(!FileManager.default.fileExists(atPath: current.path))
+    try FileManager.default.createDirectory(at: current, withIntermediateDirectories: true)
+    precondition(solarSupportDirectory(home: storageHome) == current)
+    let retainedBytes = try Data(contentsOf: savedScene)
+    precondition(retainedBytes == savedBytes)
+    print("Fresh and legacy Solar Horizon storage paths verified without moving saved scenes")
     let app = NSApplication.shared
     app.setActivationPolicy(.accessory)
     let output = URL(fileURLWithPath: CommandLine.arguments[1])

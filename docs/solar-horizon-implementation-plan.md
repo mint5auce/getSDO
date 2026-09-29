@@ -18,8 +18,8 @@ The centre stays outside the horizon crop, and the animation does not represent 
 
 Visual references:
 
-- Colour: [selected teal / pewter treatment](/Users/jonh/Development/getSDO/output/wallpaper-duotones-and-multicolour-2026-09-29/01-duotone-teal-pewter.png).
-- Composition: [original solar horizon concept](/Users/jonh/Development/getSDO/output/wallpaper-concepts-2026-09-28/01-solar-horizon.png).
+- Colour: [selected teal / pewter treatment](../output/wallpaper-duotones-and-multicolour-2026-09-29/01-duotone-teal-pewter.png).
+- Composition: [original solar horizon concept](../output/wallpaper-concepts-2026-09-28/01-solar-horizon.png).
 
 These generated concepts establish the appearance.
 Production scenes will be derived deterministically from downloaded solar images, with no daily image-generation calls or invented surface detail.
@@ -40,14 +40,14 @@ The teal / pewter grade is an aesthetic rendering and should be identified as su
 
 ## Current code and verified findings
 
-- `getSDO.py` already resolves `aia_193` to NASA's `0193` channel, reads its observation timestamp, and fetches the corresponding timestamped browse JPEG.
+- `solar_horizon.py` already resolves `aia_193` to NASA's `0193` channel, reads its observation timestamp, and fetches the corresponding timestamped browse JPEG.
 - The CLI currently defaults to seven channels at 4096 × 4096 and saves to `~/Pictures/sdo-feed`.
 - Its normal skip policy reuses any saved image from the same UTC observation day; it can therefore skip a newer observation from that day.
 - `wallpaper.py` creates deterministic static plasma crops and deliberately keeps the crop inside an inset solar disc, excluding the limb, corona, and footer.
 - `solar_radius()` returns an inset safe radius, not the actual limb radius required for this horizon.
 - Derived wallpapers currently default to `OUTPUT/wallpapers`, which conflicts with the requested separation of originals and derivatives.
 - There is no native macOS wallpaper host, screensaver target, or daily scheduler in the inspected application files.
-- The current working tree contains existing edits to `README.md`, `getSDO.py`, and `tests/test_getSDO.py`, plus new wallpaper code, tests, dependencies, and concept assets.
+- The current working tree contains existing edits to `README.md`, `solar_horizon.py`, and `tests/test_solar_horizon.py`, plus new wallpaper code, tests, dependencies, and concept assets.
   Implementation must build on and preserve that work.
 - The development Mac reports macOS 27.0, Apple M5, and one internal display.
   It reports 2940 × 1912 backing pixels with a 1470 × 956 logical mode; actual rendering dimensions must be obtained from the current drawable at runtime.
@@ -106,7 +106,7 @@ Proposed runtime layout:
 ~/Pictures/sdo-feed/
     aia_193_<UTC timestamp>_4096_0193.jpg   # Only untouched originals
 
-~/Library/Application Support/getSDO/
+~/Library/Application Support/Solar Horizon/
     config.json
     refresh-state.json
     scene.json                           # Atomic active-scene pointer
@@ -114,11 +114,11 @@ Proposed runtime layout:
         texture.png                      # Full rotationally safe texture
         manifest.json                    # Provenance, geometry, grade version
 
-~/Library/Caches/getSDO/
+~/Library/Caches/Solar Horizon/
     previews/
     scratch/
 
-~/Library/Logs/getSDO/
+~/Library/Logs/Solar Horizon/
     refresh.log
 ```
 
@@ -297,7 +297,7 @@ Update the README with source terminology, installation, schedule, directories, 
 
 | Area | Planned responsibility |
 | --- | --- |
-| `getSDO.py` | Keep CLI compatibility; add horizon-mode orchestration and precise refresh policy |
+| `solar_horizon.py` | Keep CLI compatibility; add horizon-mode orchestration and precise refresh policy |
 | `wallpaper.py` | Preserve static plasma mode; expose reusable disc-analysis primitives without changing its safety inset |
 | `solar_scene.py` | Deterministic grading, clean circular texture preparation, scene manifests, and derived cache handling |
 | `refresh.py` or equivalent module | Due-slot state, process locking, freshness rules, retry policy, and publication |

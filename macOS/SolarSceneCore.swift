@@ -101,7 +101,16 @@ func solarToggledPlayback(_ value: [String: Any], at now: Double) -> [String: An
 }
 // Use the account home even when hosted by the legacy screensaver container.
 let solarHome = URL(fileURLWithPath: String(cString: getpwuid(getuid()).pointee.pw_dir))
-let solarSupport = solarHome.appendingPathComponent("Library/Application Support/getSDO")
+func solarSupportDirectory(home: URL) -> URL {
+  let current = home.appendingPathComponent(
+    "Library/Application Support/Solar Horizon", isDirectory: true)
+  let legacy = home.appendingPathComponent("Library/Application Support/getSDO", isDirectory: true)
+  var directory: ObjCBool = false
+  let hasLegacy = FileManager.default.fileExists(atPath: legacy.path, isDirectory: &directory)
+  return hasLegacy && directory.boolValue && !FileManager.default.fileExists(atPath: current.path)
+    ? legacy : current
+}
+let solarSupport = solarSupportDirectory(home: solarHome)
 func readJSON(_ name: String, root: URL = solarSupport) -> [String: Any]? {
   guard let data = try? Data(contentsOf: root.appendingPathComponent(name)) else { return nil }
   return (try? JSONSerialization.jsonObject(with: data)) as? [String: Any]

@@ -7,7 +7,7 @@ Run commands from the repository root.
 ## Download images
 
 ```sh
-python3 getSDO.py
+python3 solar_horizon.py
 ```
 
 The default destination is `~/Pictures/sdo-feed`, which is created automatically.
@@ -17,8 +17,8 @@ Choose that folder as the image source in your photo screensaver.
 To choose a destination, fewer views, or smaller images:
 
 ```sh
-python3 getSDO.py --output ./solar-images --views aia_171 aia_304 --resolution 1024
-python3 getSDO.py --help
+python3 solar_horizon.py --output ./solar-images --views aia_171 aia_304 --resolution 1024
+python3 solar_horizon.py --help
 ```
 
 Paths containing spaces should be quoted.
@@ -58,7 +58,7 @@ Add `--wallpaper WIDTHxHEIGHT` to automatically choose a close-up of the solar s
 For the amber "Plasma River" look, use `aia_193`:
 
 ```sh
-uv run --with-requirements requirements-wallpaper.txt python getSDO.py --views aia_193 --wallpaper 3840x2160
+uv run --with-requirements requirements-wallpaper.txt python solar_horizon.py --views aia_193 --wallpaper 3840x2160
 ```
 
 Alternatively, install the optional packages into a virtual environment:
@@ -66,11 +66,11 @@ Alternatively, install the optional packages into a virtual environment:
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-wallpaper.txt
-.venv/bin/python getSDO.py --views aia_193 --wallpaper 3840x2160
+.venv/bin/python solar_horizon.py --views aia_193 --wallpaper 3840x2160
 ```
 
 Original full-disc downloads stay in the normal output folder.
-Wallpapers go into `~/Library/Caches/getSDO/wallpapers`, which you can choose as your wallpaper or screensaver source.
+Wallpapers go into `~/Library/Caches/Solar Horizon/wallpapers`, which you can choose as your wallpaper or screensaver source.
 Derived images stay outside the originals archive.
 Use `--wallpaper-output PATH` to choose a different destination.
 Portrait, square and ultrawide dimensions are also supported, up to 8192 pixels per side, 40 megapixels total and a 4:1 aspect ratio.
@@ -78,7 +78,7 @@ Portrait, square and ultrawide dimensions are also supported, up to 8192 pixels 
 To try an existing image without accessing NASA:
 
 ```sh
-uv run --with-requirements requirements-wallpaper.txt python getSDO.py --crop "/path/to/solar-image.jpg" --wallpaper 3840x2160 --wallpaper-output ./wallpapers
+uv run --with-requirements requirements-wallpaper.txt python solar_horizon.py --crop "/path/to/solar-image.jpg" --wallpaper 3840x2160 --wallpaper-output ./wallpapers
 ```
 
 The selector locates the solar limb in a small analysis preview and searches regions at three zoom levels and nine rotations.

@@ -115,3 +115,13 @@ Reopening the sheet loaded the current bundle and displayed the correct Solar Pe
 System Settings was restored to its previous Login Items page, and Solar Peek remains selected and running.
 The seven original files retain their pre-installation hashes.
 A full live 20-minute Solar Peek soak and lock/unlock handoff were not repeated.
+
+## Solar Horizon rename
+
+Version 1.5 uses the `solar_horizon.py` command, `uk.jonh.solar-horizon` bundle and launch-job identifiers, and the `mint5auce/solar-horizon` repository.
+All 55 Python tests, Python and Swift formatting checks, native renderer comparisons, and fresh/legacy storage checks pass.
+The installed app and screensaver match the validated build and pass signature verification.
+The renamed desktop job is running, the refresh job exits successfully, and the old jobs have been retired.
+All seven original image hashes and both scene/playback settings hashes are unchanged.
+The existing support directory is reused to preserve absolute texture paths; new installations use `~/Library/Application Support/Solar Horizon`.
+The real System Settings preview, full-period soak and lock/unlock handoff were not repeated for this rename.

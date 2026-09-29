@@ -13,13 +13,13 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from unittest.mock import patch
 
-import getSDO
+import solar_horizon
 
 ROOT = Path(__file__).resolve().parents[1]
 JPEG = (ROOT / "tests" / "fixtures" / "pixel.jpg").read_bytes()
 RUNNER = (
-    "import getSDO, sys; getSDO.SDO_ROOT = sys.argv[1]; "
-    "raise SystemExit(getSDO.main(sys.argv[2:]))"
+    "import solar_horizon, sys; solar_horizon.SDO_ROOT = sys.argv[1]; "
+    "raise SystemExit(solar_horizon.main(sys.argv[2:]))"
 )
 
 
@@ -65,7 +65,7 @@ class DownloadTests(unittest.TestCase):
         self.thread.start()
         self.addCleanup(self.stop_server)
         self.base_url = f"http://127.0.0.1:{self.server.server_port}"
-        for channel in getSDO.VIEWS.values():
+        for channel in solar_horizon.VIEWS.values():
             self.add_observation(channel)
 
     def stop_server(self):
@@ -89,7 +89,7 @@ class DownloadTests(unittest.TestCase):
 
     def filename(self, view="aia_171", timestamp=None, resolution=512):
         timestamp = timestamp or self.timestamp
-        return f"{view}_{timestamp:%Y%m%d_%H%M%S}_{resolution}_{getSDO.VIEWS[view]}.jpg"
+        return f"{view}_{timestamp:%Y%m%d_%H%M%S}_{resolution}_{solar_horizon.VIEWS[view]}.jpg"
 
     def cli(self, *args, default_output=False, without_site_packages=False):
         options = [] if default_output else ["--output", str(self.output)]
@@ -115,14 +115,14 @@ class DownloadTests(unittest.TestCase):
         return self.cli("--views", "aia_171", "--resolution", "512", *args)
 
     def test_default_views_resolution_and_portable_destination(self):
-        for channel in getSDO.VIEWS.values():
+        for channel in solar_horizon.VIEWS.values():
             self.add_observation(channel, resolution=4096)
         result = self.cli(default_output=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         output = self.work / "home" / "Pictures" / "sdo-feed"
         self.assertEqual(len(list(output.glob("*.jpg"))), 7)
         self.assertEqual(len(self.requests), 14)
-        for view in getSDO.VIEWS:
+        for view in solar_horizon.VIEWS:
             self.assertEqual(
                 (output / self.filename(view, resolution=4096)).read_bytes(), JPEG
             )
@@ -257,7 +257,7 @@ class DownloadTests(unittest.TestCase):
                 self.assertIn("Error: aia_171:", result.stderr)
                 self.assertNotIn("Traceback", result.stderr)
                 self.assertEqual((self.output / self.filename()).read_bytes(), JPEG)
-                self.assertFalse(list(self.output.glob(".getSDO-*")))
+                self.assertFalse(list(self.output.glob(".solar-horizon-*")))
 
     def test_write_failure_cleans_temporary_file_and_preserves_existing_image(self):
         self.output.mkdir(parents=True)
@@ -268,7 +268,7 @@ class DownloadTests(unittest.TestCase):
             patch.object(Path, "replace", side_effect=OSError("disk write failed")),
             self.assertRaisesRegex(OSError, "disk write failed"),
         ):
-            getSDO.save_image(self.base_url + image_path, target, 2)
+            solar_horizon.save_image(self.base_url + image_path, target, 2)
         self.assertEqual(target.read_bytes(), b"original contents")
         self.assertEqual(list(self.output.iterdir()), [target])
 
@@ -276,10 +276,10 @@ class DownloadTests(unittest.TestCase):
         image_path = self.add_observation("0171")
         target = self.work / "oversized.jpg"
         with (
-            patch.object(getSDO, "MAX_IMAGE_BYTES", len(JPEG) - 1),
+            patch.object(solar_horizon, "MAX_IMAGE_BYTES", len(JPEG) - 1),
             self.assertRaisesRegex(ValueError, "exceeds"),
         ):
-            getSDO.save_image(self.base_url + image_path, target, 2)
+            solar_horizon.save_image(self.base_url + image_path, target, 2)
         self.assertFalse(target.exists())
 
     def test_network_timeout_is_reported(self):
@@ -361,7 +361,7 @@ class DownloadTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("Created wallpaper:", result.stdout)
         target = next(
-            (self.work / "home/Library/Caches/getSDO/wallpapers").glob("*.jpg")
+            (self.work / "home/Library/Caches/Solar Horizon/wallpapers").glob("*.jpg")
         )
         original = self.output / self.filename(view="aia_193")
         self.assertEqual(original.read_bytes(), source.read_bytes())
@@ -428,7 +428,9 @@ class DownloadTests(unittest.TestCase):
         self.assertEqual(
             len(
                 list(
-                    (self.work / "home/Library/Caches/getSDO/wallpapers").glob("*.jpg")
+                    (self.work / "home/Library/Caches/Solar Horizon/wallpapers").glob(
+                        "*.jpg"
+                    )
                 )
             ),
             1,
@@ -436,7 +438,7 @@ class DownloadTests(unittest.TestCase):
 
     def test_script_entry_point_help_does_not_download(self):
         result = subprocess.run(
-            [sys.executable, str(ROOT / "getSDO.py"), "--help"],
+            [sys.executable, str(ROOT / "solar_horizon.py"), "--help"],
             cwd=self.work,
             capture_output=True,
             text=True,

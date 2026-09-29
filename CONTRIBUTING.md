@@ -7,7 +7,7 @@ Run commands from the repository root.
 Run the downloader tests without third-party packages:
 
 ```sh
-python3 -m unittest discover -s tests -p test_getSDO.py -v
+python3 -m unittest discover -s tests -p test_solar_horizon.py -v
 ```
 
 Tests use a local HTTP server and temporary directories, so they do not need internet access or write to your Pictures folder.
@@ -35,7 +35,7 @@ The Swift check and `scripts/validate-macos.sh` require macOS and Xcode.
 For a live smoke test without touching your screensaver collection:
 
 ```sh
-python3 getSDO.py --output /tmp/getSDO-smoke --resolution 512
+python3 solar_horizon.py --output /tmp/solar-horizon-smoke --resolution 512
 ```
 
 ## Native validation

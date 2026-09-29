@@ -11,7 +11,10 @@ final class SolarApp: NSObject, NSApplicationDelegate {
   var previewWindows: [NSWindow] = []
   var viewItems: [NSMenuItem] = []
   func applicationDidFinishLaunching(_ notification: Notification) {
-    if NSRunningApplication.runningApplications(withBundleIdentifier: "uk.jonh.getSDO.app")
+    let running = ["uk.jonh.solar-horizon.app", "uk.jonh.getSDO.app"].flatMap {
+      NSRunningApplication.runningApplications(withBundleIdentifier: $0)
+    }
+    if running
       .contains(where: { $0.processIdentifier != ProcessInfo.processInfo.processIdentifier })
     {
       NSApp.terminate(nil)

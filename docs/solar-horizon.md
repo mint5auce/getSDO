@@ -56,11 +56,14 @@ Its real macOS-host preview and lock/unlock handoff must be checked after select
 | Location | Contents |
 | --- | --- |
 | `~/Pictures/sdo-feed` | Untouched original browse JPEGs only; all observations retained |
-| `~/Library/Application Support/getSDO/scenes` | Versioned full-disc colour textures and provenance manifests |
-| `~/Library/Application Support/getSDO/scene.json` | Atomic current / previous scene pointer and transition start |
-| `~/Library/Application Support/getSDO/runtime` | Installed refresh scripts and managed Python environment |
-| `~/Library/Caches/getSDO` | Disposable static wallpapers and previews |
-| `~/Library/Logs/getSDO/refresh.log` | Refresh status, with bounded log rotation |
+| `~/Library/Application Support/Solar Horizon/scenes` | Versioned full-disc colour textures and provenance manifests |
+| `~/Library/Application Support/Solar Horizon/scene.json` | Atomic current / previous scene pointer and transition start |
+| `~/Library/Application Support/Solar Horizon/runtime` | Installed refresh scripts and managed Python environment |
+| `~/Library/Caches/Solar Horizon` | Disposable static wallpapers and previews |
+| `~/Library/Logs/Solar Horizon/refresh.log` | Refresh status, with bounded log rotation |
+
+Upgrades reuse an existing `~/Library/Application Support/getSDO` directory when the new support directory is absent, preserving saved scenes and their absolute paths.
+The installer replaces owned bundles and retires the old launch jobs; original downloads stay in `~/Pictures/sdo-feed`.
 
 Original downloads are staged outside the archive, fully decoded and atomically renamed into it.
 Scene metadata records the observation's UTC timestamp, scientific channel name, original SHA-256, source URL, grading version and limb geometry.
@@ -72,7 +75,7 @@ Existing unrelated files and older user-created wallpaper directories are preser
 To run a refresh manually after installing the optional image dependencies:
 
 ```sh
-.venv/bin/python getSDO.py --solar-horizon --force
+.venv/bin/python solar_horizon.py --solar-horizon --force
 ```
 
 NASA's latest endpoint can be stale.

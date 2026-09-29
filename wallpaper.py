@@ -259,7 +259,7 @@ def create_wallpaper(
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(
-            dir=output, prefix=".getSDO-", suffix=".tmp", delete=False
+            dir=output, prefix=".solar-horizon-", suffix=".tmp", delete=False
         ) as handle:
             temporary = Path(handle.name)
             wallpaper.save(handle, format="JPEG", quality=95, subsampling=0, exif=exif)

@@ -1,4 +1,4 @@
-# getSDO
+# Solar Horizon
 
 Download NASA solar images, create plasma wallpapers, or run an animated macOS desktop and screensaver.
 Requires Python 3.11 or newer.
@@ -6,7 +6,7 @@ Requires Python 3.11 or newer.
 ## Download images
 
 ```sh
-python3 getSDO.py
+python3 solar_horizon.py
 ```
 
 Saves seven AIA views at 4096 × 4096 to `~/Pictures/sdo-feed`.
@@ -28,10 +28,10 @@ See the [macOS guide](docs/solar-horizon.md) for setup, controls and compatibili
 ## Plasma wallpapers
 
 ```sh
-uv run --with-requirements requirements-wallpaper.txt python getSDO.py --views aia_193 --wallpaper 3840x2160
+uv run --with-requirements requirements-wallpaper.txt python solar_horizon.py --views aia_193 --wallpaper 3840x2160
 ```
 
-Creates a close-up in `~/Library/Caches/getSDO/wallpapers`, preserving the original image.
+Creates a close-up in `~/Library/Caches/Solar Horizon/wallpapers`, preserving the original image.
 See [wallpaper options](docs/usage.md#plasma-wallpapers) for other sizes and offline cropping.
 
 ## More

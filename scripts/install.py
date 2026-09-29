@@ -13,8 +13,17 @@ import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from scene_store import (
+    BUNDLE_PREFIX,
+    LEGACY_BUNDLE_PREFIX,
+    SUPPORT,
+    atomic_json,
+    compatible_identifiers,
+)
+
 HOME = Path.home()
-SUPPORT = HOME / "Library/Application Support/getSDO"
 
 
 def run(*args):
@@ -24,10 +33,9 @@ def run(*args):
 def owned_copy(source, destination, identifier):
     if destination.exists():
         info = destination / "Contents/Info.plist"
-        if (
-            not info.exists()
-            or plistlib.loads(info.read_bytes()).get("CFBundleIdentifier") != identifier
-        ):
+        if not info.exists() or plistlib.loads(info.read_bytes()).get(
+            "CFBundleIdentifier"
+        ) not in compatible_identifiers(identifier):
             raise RuntimeError(f"Refusing to overwrite unrelated bundle: {destination}")
     # Loaded executables must keep their original inode until their host exits.
     # Replacing files inside a loaded bundle can leave a cached, mixed version.
@@ -71,20 +79,13 @@ def main():
     ):
         parser.error("Originals and application data must be separate")
     run(ROOT / "scripts/build-macos.sh")
-    for label in ("uk.jonh.getSDO.desktop", "uk.jonh.getSDO.refresh"):
-        path = HOME / "Library/LaunchAgents" / f"{label}.plist"
-        if path.exists():
-            if plistlib.loads(path.read_bytes()).get("Label") != label:
-                raise RuntimeError(f"Refusing to stop unrelated job: {path}")
-            subprocess.run(
-                ["launchctl", "bootout", f"gui/{os.getuid()}", str(path)],
-                capture_output=True,
-                check=False,
-            )
+    for prefix in (BUNDLE_PREFIX, LEGACY_BUNDLE_PREFIX):
+        for component in ("desktop", "refresh"):
+            stop_job(f"{prefix}.{component}")
     runtime = SUPPORT / "runtime"
     runtime.mkdir(parents=True, exist_ok=True)
     for name in [
-        "getSDO.py",
+        "solar_horizon.py",
         "wallpaper.py",
         "solar_scene.py",
         "scene_store.py",
@@ -96,8 +97,6 @@ def main():
         run(sys.executable, "-m", "venv", runtime / ".venv")
     python = runtime / ".venv/bin/python"
     run(python, "-m", "pip", "install", "-r", runtime / "requirements-wallpaper.txt")
-    from scene_store import atomic_json
-
     config.update(
         python=str(python),
         refresh_script=str(runtime / "refresh.py"),
@@ -109,17 +108,17 @@ def main():
     savers = HOME / "Library/Screen Savers"
     savers.mkdir(parents=True, exist_ok=True)
     app = applications / "Solar Horizon.app"
-    owned_copy(ROOT / "build/Solar Horizon.app", app, "uk.jonh.getSDO.app")
+    owned_copy(ROOT / "build/Solar Horizon.app", app, f"{BUNDLE_PREFIX}.app")
     owned_copy(
         ROOT / "build/Solar Horizon.saver",
         savers / "Solar Horizon.saver",
-        "uk.jonh.getSDO.saver",
+        f"{BUNDLE_PREFIX}.saver",
     )
     agents = HOME / "Library/LaunchAgents"
     agents.mkdir(parents=True, exist_ok=True)
     jobs = [
         (
-            "uk.jonh.getSDO.refresh",
+            f"{BUNDLE_PREFIX}.refresh",
             {
                 "ProgramArguments": [str(python), str(runtime / "refresh.py")],
                 "RunAtLoad": True,
@@ -128,7 +127,7 @@ def main():
             },
         ),
         (
-            "uk.jonh.getSDO.desktop",
+            f"{BUNDLE_PREFIX}.desktop",
             {
                 "ProgramArguments": [str(app / "Contents/MacOS/SolarHorizon")],
                 "RunAtLoad": True,
@@ -148,12 +147,28 @@ def main():
                 check=False,
             )
             run("launchctl", "bootstrap", f"gui/{os.getuid()}", path)
+    # Retire the old owned jobs only after the renamed installation is published.
+    for component in ("desktop", "refresh"):
+        stop_job(f"{LEGACY_BUNDLE_PREFIX}.{component}", remove=True)
     print(f"Installed {app} and {savers / 'Solar Horizon.saver'}")
     print(
         "Select Solar Horizon in System Settings > Screen Saver to enable the companion."
     )
 
 
+def stop_job(label, remove=False):
+    path = HOME / "Library/LaunchAgents" / f"{label}.plist"
+    if path.exists():
+        if plistlib.loads(path.read_bytes()).get("Label") != label:
+            raise RuntimeError(f"Refusing to stop unrelated job: {path}")
+        subprocess.run(
+            ["launchctl", "bootout", f"gui/{os.getuid()}", str(path)],
+            capture_output=True,
+            check=False,
+        )
+        if remove:
+            path.unlink()
+
+
 if __name__ == "__main__":
-    sys.path.insert(0, str(ROOT))
     main()

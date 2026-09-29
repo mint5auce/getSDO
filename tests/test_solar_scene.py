@@ -9,8 +9,8 @@ from unittest.mock import patch
 import numpy as np
 from PIL import Image
 
-import getSDO
 import refresh
+import solar_horizon
 import solar_scene
 
 
@@ -72,23 +72,23 @@ class SceneTests(unittest.TestCase):
             target.write_bytes(b"\xff\xd8\xffbroken\xff\xd9")
 
         with (
-            patch.object(getSDO, "latest_timestamp", return_value=self.stamp),
-            patch.object(getSDO, "save_image", side_effect=download),
+            patch.object(solar_horizon, "latest_timestamp", return_value=self.stamp),
+            patch.object(solar_horizon, "save_image", side_effect=download),
             self.assertLogs(level="ERROR"),
             self.assertRaises(OSError),
         ):
             refresh.refresh(self.support, self.originals, True, self.stamp)
         self.assertEqual(list(self.originals.iterdir()), [self.source])
         self.assertFalse((self.support / "scene.json").exists())
-        self.assertFalse(list(self.root.glob(".getSDO-stage-*")))
+        self.assertFalse(list(self.root.glob(".solar-horizon-stage-*")))
 
     def test_same_day_new_observation_publishes_without_phase_reset(self):
         def download(url, target, timeout):
             target.write_bytes(self.source.read_bytes())
 
         with (
-            patch.object(getSDO, "latest_timestamp", return_value=self.stamp),
-            patch.object(getSDO, "save_image", side_effect=download),
+            patch.object(solar_horizon, "latest_timestamp", return_value=self.stamp),
+            patch.object(solar_horizon, "save_image", side_effect=download),
             patch.object(refresh, "continuous_seconds", return_value=50),
         ):
             refresh.refresh(self.support, self.originals, True, self.stamp)
@@ -100,7 +100,7 @@ class SceneTests(unittest.TestCase):
             Image.fromarray(changed_image).save(self.source)
             with (
                 patch.object(
-                    getSDO,
+                    solar_horizon,
                     "latest_timestamp",
                     return_value=self.stamp + dt.timedelta(minutes=15),
                 ),
@@ -123,7 +123,9 @@ class SceneTests(unittest.TestCase):
         sentinel = {"current": {"id": "last-good"}}
         solar_scene.atomic_json(self.support / "scene.json", sentinel)
         with (
-            patch.object(getSDO, "latest_timestamp", side_effect=OSError("offline")),
+            patch.object(
+                solar_horizon, "latest_timestamp", side_effect=OSError("offline")
+            ),
             self.assertLogs(level="ERROR"),
             self.assertRaises(OSError),
         ):
@@ -168,7 +170,9 @@ class SceneTests(unittest.TestCase):
             self.assertEqual(image.size, (256, 256))
 
     def test_retries_stop_until_the_next_daily_slot(self):
-        with patch.object(getSDO, "latest_timestamp", side_effect=OSError("offline")):
+        with patch.object(
+            solar_horizon, "latest_timestamp", side_effect=OSError("offline")
+        ):
             when = self.stamp
             for delay in (1800, 7200, 21600, None):
                 with self.assertLogs(level="ERROR"), self.assertRaises(OSError):
@@ -229,7 +233,7 @@ class SceneTests(unittest.TestCase):
         solar_scene.atomic_json(self.support / "scene.json", active)
         with (
             patch.object(
-                getSDO,
+                solar_horizon,
                 "latest_timestamp",
                 return_value=self.stamp - dt.timedelta(days=1),
             ),

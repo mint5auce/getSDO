@@ -2,7 +2,7 @@ import AppKit
 import OSLog
 import ScreenSaver
 
-private let saverLog = Logger(subsystem: "uk.jonh.getSDO.saver", category: "lifecycle")
+private let saverLog = Logger(subsystem: "uk.jonh.solar-horizon.saver", category: "lifecycle")
 
 // Draw a retained image through AppKit, independent of remote Metal drawables.
 @objc(SolarHorizonSaver)

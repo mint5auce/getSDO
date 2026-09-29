@@ -10,7 +10,7 @@ import tempfile
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-import getSDO
+import solar_horizon
 from solar_scene import (
     SUPPORT,
     atomic_json,
@@ -67,7 +67,7 @@ def refresh(support=SUPPORT, originals=None, force=False, now=None, timeout=30):
         if state.get("retry_day") != day:
             state["retry"] = 0
         try:
-            stamp = getSDO.latest_timestamp("0193", timeout)
+            stamp = solar_horizon.latest_timestamp("0193", timeout)
             scene_path = support / "scene.json"
             old = json.loads(scene_path.read_text()) if scene_path.exists() else None
             active_observation = (
@@ -81,7 +81,7 @@ def refresh(support=SUPPORT, originals=None, force=False, now=None, timeout=30):
                     "NASA reports an older observation; retaining the newer active scene"
                 )
             name = f"aia_193_{stamp:%Y%m%d_%H%M%S}_4096_0193.jpg"
-            url = f"{getSDO.SDO_ROOT}/assets/img/browse/{stamp:%Y/%m/%d}/{stamp:%Y%m%d_%H%M%S}_4096_0193.jpg"
+            url = f"{solar_horizon.SDO_ROOT}/assets/img/browse/{stamp:%Y/%m/%d}/{stamp:%Y%m%d_%H%M%S}_4096_0193.jpg"
             originals.mkdir(parents=True, exist_ok=True)
             source = originals / name
             if source.exists():
@@ -89,10 +89,10 @@ def refresh(support=SUPPORT, originals=None, force=False, now=None, timeout=30):
             else:
                 # Sibling staging keeps the atomic rename on the same volume, outside originals.
                 with tempfile.TemporaryDirectory(
-                    prefix=".getSDO-stage-", dir=originals.parent
+                    prefix=".solar-horizon-stage-", dir=originals.parent
                 ) as staging:
                     staged = Path(staging) / name
-                    getSDO.save_image(url, staged, timeout)
+                    solar_horizon.save_image(url, staged, timeout)
                     validate_image(staged)
                     staged.replace(source)
             manifest = prepare_scene(source, support, stamp.isoformat(), url)
@@ -151,7 +151,7 @@ def main():
     parser.add_argument("--originals", type=Path)
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
-    logs = Path.home() / "Library/Logs/getSDO"
+    logs = Path.home() / "Library/Logs/Solar Horizon"
     logs.mkdir(parents=True, exist_ok=True)
     logging.basicConfig(
         level=logging.INFO,

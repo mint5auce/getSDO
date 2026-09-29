@@ -159,7 +159,7 @@ class CropTests(unittest.TestCase):
         ):
             wallpaper.create_wallpaper(self.source, self.output, (640, 360), force=True)
         self.assertEqual(target.read_bytes(), before)
-        self.assertFalse(list(self.output.glob(".getSDO-*")))
+        self.assertFalse(list(self.output.glob(".solar-horizon-*")))
 
     def test_invalid_sources_fail_without_publishing(self):
         for image in (

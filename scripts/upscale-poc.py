@@ -8,6 +8,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
 import urllib.request
@@ -18,8 +19,10 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO))
+from scene_store import BUNDLE_PREFIX, LEGACY_BUNDLE_PREFIX, SUPPORT
+
 ROOT = REPO / "build/solar-horizon-upscale-poc"
-SUPPORT = Path.home() / "Library/Application Support/getSDO"
 BACKEND = "20251207-174704"
 ARCHIVE = "277419791281a56eae0c739c70120b974d7267cf7c2de8e86dc09798d4b314db"
 WEIGHTS_ARCHIVE = "e0ad05580abfeb25f8d8fb55aaf7bedf552c375b5b4d9bd3c8d59764d2cc333a"
@@ -134,7 +137,8 @@ def protected_files(manifest):
         SUPPORT / "playback.json",
         Path(manifest["texture"]),
     ]
-    files += list((Path.home() / "Library/LaunchAgents").glob("*getSDO*.plist"))
+    for prefix in (BUNDLE_PREFIX, LEGACY_BUNDLE_PREFIX):
+        files += list((Path.home() / "Library/LaunchAgents").glob(f"{prefix}.*.plist"))
     files += [
         p for root in roots if root.exists() for p in root.rglob("*") if p.is_file()
     ]

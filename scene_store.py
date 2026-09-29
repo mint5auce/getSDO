@@ -5,7 +5,26 @@ import os
 import tempfile
 from pathlib import Path
 
-SUPPORT = Path.home() / "Library/Application Support/getSDO"
+BUNDLE_PREFIX = "uk.jonh.solar-horizon"
+LEGACY_BUNDLE_PREFIX = "uk.jonh.getSDO"
+
+
+def support_directory(home=None):
+    """Keep existing scenes and absolute manifest paths usable after the rename."""
+    home = Path(home) if home is not None else Path.home()
+    current = home / "Library/Application Support/Solar Horizon"
+    legacy = home / "Library/Application Support/getSDO"
+    return legacy if legacy.is_dir() and not current.exists() else current
+
+
+def compatible_identifiers(identifier):
+    """Recognize only the current identity and its original installation identity."""
+    if identifier.startswith(BUNDLE_PREFIX + "."):
+        return (identifier, LEGACY_BUNDLE_PREFIX + identifier[len(BUNDLE_PREFIX) :])
+    return (identifier,)
+
+
+SUPPORT = support_directory()
 
 
 def atomic_json(path, value):

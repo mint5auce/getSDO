@@ -14,7 +14,7 @@ cp "$repo_dir/macOS/Resources/thumbnail.png" "$repo_dir/macOS/Resources/thumbnai
 import plistlib,sys
 from pathlib import Path
 for kind, executable, package in [('app','SolarHorizon','APPL'),('saver','SolarHorizonSaver','BNDL')]:
-    data={'CFBundleIdentifier':f'uk.jonh.getSDO.{kind}', 'CFBundleName':'Solar Horizon','CFBundleExecutable':executable,'CFBundlePackageType':package,'CFBundleVersion':'5','CFBundleShortVersionString':'1.4','LSMinimumSystemVersion':'14.0','CFBundleInfoDictionaryVersion':'6.0','CFBundleDevelopmentRegion':'en','NSHighResolutionCapable':True}
+    data={'CFBundleIdentifier':f'uk.jonh.solar-horizon.{kind}', 'CFBundleName':'Solar Horizon','CFBundleExecutable':executable,'CFBundlePackageType':package,'CFBundleVersion':'6','CFBundleShortVersionString':'1.5','LSMinimumSystemVersion':'14.0','CFBundleInfoDictionaryVersion':'6.0','CFBundleDevelopmentRegion':'en','NSHighResolutionCapable':True}
     if kind=='app': data['LSUIElement']=True
     else: data['NSPrincipalClass']='SolarHorizonSaver'
     with (Path(sys.argv[1])/f'Solar Horizon.{kind}'/'Contents/Info.plist').open('wb') as f: plistlib.dump(data,f)

@@ -23,7 +23,7 @@ VIEWS = {
     "aia_1700": "1700",
 }
 MAX_IMAGE_BYTES = 32 * 1024 * 1024
-USER_AGENT = "getSDO/2.0 (+https://github.com/mint5auce/getSDO)"
+USER_AGENT = "solar-horizon/2.0 (+https://github.com/mint5auce/solar-horizon)"
 
 
 def request(url: str, timeout: float):
@@ -73,7 +73,10 @@ def save_image(url: str, destination: Path, timeout: float) -> None:
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(
-            dir=destination.parent, prefix=".getSDO-", suffix=".tmp", delete=False
+            dir=destination.parent,
+            prefix=".solar-horizon-",
+            suffix=".tmp",
+            delete=False,
         ) as output:
             temporary = Path(output.name)
             output.write(data)
@@ -179,7 +182,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--wallpaper-output",
         type=Path,
-        help="wallpaper folder (default: ~/Library/Caches/getSDO/wallpapers)",
+        help="wallpaper folder (default: ~/Library/Caches/Solar Horizon/wallpapers)",
     )
     parser.add_argument(
         "--crop",
@@ -235,7 +238,7 @@ def main(argv: list[str] | None = None) -> int:
 
     output = args.output.expanduser()
     wallpapers = (
-        args.wallpaper_output or Path.home() / "Library/Caches/getSDO/wallpapers"
+        args.wallpaper_output or Path.home() / "Library/Caches/Solar Horizon/wallpapers"
     ).expanduser()
 
     def crop_image(path: Path) -> None:
