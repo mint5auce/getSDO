@@ -1,0 +1,2 @@
+-r requirements-wallpaper.txt
+ruff==0.16.9

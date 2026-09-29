@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download one SDO image per observation day and view, without dependencies."""
+"""Download one SDO image per observation day and view, optionally crop wallpapers."""
 
 import argparse
 import datetime as dt
@@ -119,6 +119,23 @@ def positive_timeout(value: str) -> float:
     return timeout
 
 
+def wallpaper_size(value: str) -> tuple[int, int]:
+    match = re.fullmatch(r"(\d+)[xX](\d+)", value)
+    if match:
+        width, height = map(int, match.groups())
+        if (
+            64 <= min(width, height)
+            and max(width, height) <= 8192
+            and width * height <= 40_000_000
+            and max(width, height) / min(width, height) <= 4
+        ):
+            return width, height
+    raise argparse.ArgumentTypeError(
+        "wallpaper size must be WIDTHxHEIGHT, 64-8192 pixels per side, "
+        "at most 40 megapixels and aspect ratio at most 4:1"
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -151,10 +168,96 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--force",
         action="store_true",
-        help="download the latest observation even if this observation day is saved",
+        help="refresh the latest observation and any wallpaper even if already saved",
+    )
+    parser.add_argument(
+        "--wallpaper",
+        type=wallpaper_size,
+        metavar="WIDTHxHEIGHT",
+        help="also select and crop a plasma wallpaper (requires requirements-wallpaper.txt)",
+    )
+    parser.add_argument(
+        "--wallpaper-output",
+        type=Path,
+        help="wallpaper folder (default: ~/Library/Caches/getSDO/wallpapers)",
+    )
+    parser.add_argument(
+        "--crop",
+        type=Path,
+        metavar="IMAGE",
+        help="crop an existing full-disc image without network access; requires --wallpaper",
+    )
+    parser.add_argument(
+        "--solar-horizon",
+        action="store_true",
+        help="refresh the daily AIA 193 Å teal / pewter scene for the native macOS hosts",
     )
     args = parser.parse_args(argv)
+    if args.solar_horizon:
+        if (
+            args.wallpaper
+            or args.crop
+            or args.wallpaper_output
+            or args.resolution != 4096
+        ):
+            parser.error(
+                "--solar-horizon uses a full 4096-pixel source and cannot be combined with cropping"
+            )
+        try:
+            from refresh import refresh
+
+            updated = refresh(
+                originals=args.output, force=args.force, timeout=args.timeout
+            )
+            print(
+                "Solar Horizon scene refreshed."
+                if updated
+                else "Solar Horizon is not due or a refresh is running."
+            )
+            return 0
+        except (ImportError, OSError, ValueError, http.client.HTTPException) as error:
+            print(f"Error refreshing Solar Horizon: {error}", file=sys.stderr)
+            return 1
+    if (args.crop or args.wallpaper_output) and not args.wallpaper:
+        parser.error("--crop and --wallpaper-output require --wallpaper WIDTHxHEIGHT")
+
+    if args.wallpaper:
+        try:
+            from wallpaper import create_wallpaper
+        except ImportError as error:
+            print(
+                "Error: wallpaper mode requires Pillow and NumPy. Install with "
+                f"'{sys.executable} -m pip install -r requirements-wallpaper.txt' "
+                f"({error}).",
+                file=sys.stderr,
+            )
+            return 1
+
     output = args.output.expanduser()
+    wallpapers = (
+        args.wallpaper_output or Path.home() / "Library/Caches/getSDO/wallpapers"
+    ).expanduser()
+
+    def crop_image(path: Path) -> None:
+        status, target, metadata = create_wallpaper(
+            path, wallpapers, args.wallpaper, args.force
+        )
+        crop = metadata["crop"]
+        print(
+            f"{status}: {target} "
+            f"(source crop {crop['width']:.0f}x{crop['height']:.0f}, "
+            f"rotation {crop['angle']} degrees)",
+            flush=True,
+        )
+
+    if args.crop:
+        try:
+            crop_image(args.crop.expanduser())
+        except (OSError, ValueError) as error:
+            print(f"Error creating wallpaper: {error}", file=sys.stderr)
+            return 1
+        return 0
+
     try:
         output.mkdir(parents=True, exist_ok=True)
     except OSError as error:
@@ -178,6 +281,8 @@ def main(argv: list[str] | None = None) -> int:
                 output, view, timestamp, args.resolution, args.timeout, args.force
             )
             print(f"{status}: {path}", flush=True)
+            if args.wallpaper:
+                crop_image(path)
         except (OSError, ValueError, http.client.HTTPException) as error:
             print(f"Error: {view}: {error}", file=sys.stderr)
             failures += 1

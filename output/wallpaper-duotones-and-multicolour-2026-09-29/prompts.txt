@@ -1,0 +1,91 @@
+Solar wallpaper studies: four subtle duotones and four multicolour treatments
+Tool: built-in imagegen
+References: the three original solar wallpaper compositions.
+
+01-duotone-teal-pewter | Coronal edge | Teal / pewter
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this subtle duotone colour treatment only: A restrained two-tone grade of smoky petrol teal and warm pewter. Deep coloured shadow and middle values use heavily desaturated teal; light plasma threads and corona use muted warm silver with a slight beige cast. Black stays black. Both tones are subdued, tactile and elegant, with low colour saturation, gentle glow and ample fine detail. Avoid bright electric cyan and brilliant white.
+Composition invariants: Preserve the exact narrow arc along the right edge, the large pure-black left two thirds, and all existing corona loops, fissures and surface structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.
+
+02-duotone-blue-rose | Solar horizon | Blue / dusty rose
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this subtle duotone colour treatment only: A restrained two-tone grade of midnight slate blue and dusty rose. Shadows and most midtones use desaturated ink-blue/slate; the higher midtones, delicate corona and magnetic highlights use soft muted rose-grey. Black stays black. The two colours must be perceptible but softly blended through luminance. Low saturation, softened peak brightness, calm and atmospheric. Avoid saturated purple, hot pink and neon blue.
+Composition invariants: Preserve the broad shallow horizon, its exact position and curvature, the black upper half, the crop beyond both sides and bottom, and all existing surface structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.
+
+03-duotone-graphite-champagne | Plasma river | Graphite / champagne
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this subtle duotone colour treatment only: A restrained two-tone grade of warm graphite and pale champagne. Deep shadows and middle values use a neutral warm charcoal-grey; thin bright filament structures use softly golden beige champagne. Black fissures remain black. Most of the picture should feel nearly monochrome, with quiet champagne highlights revealing the flowing surface texture. Desaturated, dark, photographic and sophisticated. Avoid the original saturated amber, yellow glare and blown white highlights.
+Composition invariants: Preserve the full-bleed crop, the diagonal irregular black fissure from lower left to upper right, and the exact placement, scale and direction of all existing filament structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.
+
+04-duotone-plum-copper | Coronal edge | Plum / muted copper
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this subtle duotone colour treatment only: A restrained two-tone grade of smoked aubergine and muted copper. Dark and middle solar surface values use greyed deep plum; delicate coronal strands and brighter loops use a pale desaturated copper/terracotta. Black stays black. The balance is dark, understated and softly luminous, with just enough warm/cool separation to reveal the solar texture. Avoid saturated violet, magenta, bright orange and neon effects.
+Composition invariants: Preserve the exact narrow arc along the right edge, the large pure-black left two thirds, and all existing corona loops, fissures and surface structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.
+
+05-multicolour-aurora | Solar horizon | Aurora
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this multicolour colour treatment only: An artful multicolour solar grade: deep indigo in darker solar folds, petrol blue and sea-green through broad plasma flows on the left, transitioning gently to muted golden amber in the existing luminous regions on the right, with a few delicate lilac transitions in the corona. Colours should interweave locally with the existing magnetic filaments rather than simply form a flat screen-wide gradient. Preserve pure-black sky. Restrained but clearly visible multiple hues, coherent photographic luminosity, warm/cool interplay. No rainbow stripes or additional aurora objects.
+Composition invariants: Preserve the broad shallow horizon, its exact position and curvature, the black upper half, the crop beyond both sides and bottom, and all existing surface structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.
+
+06-multicolour-prismatic-limb | Coronal edge | Prismatic limb
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this multicolour colour treatment only: A graceful multicolour treatment of the EXISTING solar limb: deep violet and indigo near its upper section, ocean blue and pale turquoise in the middle arc, softly luminous peach and copper around its lower section. Dark surface folds remain deep inky shades of the neighbouring colours. Each hue should subtly spill through nearby existing loops and corona threads, with organic blended boundaries. The black left two thirds must stay pure black. Elegant prismatic light, rich tonal detail, modest saturation. Avoid rigid bands, a uniform rainbow, overwhelming neon or a new light source.
+Composition invariants: Preserve the exact narrow arc along the right edge, the large pure-black left two thirds, and all existing corona loops, fissures and surface structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.
+
+07-multicolour-mineral | Plasma river | Mineral currents
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this multicolour colour treatment only: A multicolour mineral-inspired solar grade, using deep plum and midnight blue in existing shadow folds, dark oxidised teal and muted jade through fine flowing plasma strands, and warm copper/coral illuminating selected pre-existing magnetic whirlpools and highlights. Several colours should coexist within each bank of the black diagonal channel, integrated at the filament level, forming organic warm/cool currents rather than large divided colour zones or a single gradient. Preserve black fissures. Detailed, dark, sophisticated, clearly multicolour, controlled glow. Do not introduce actual minerals, rocks or terrain.
+Composition invariants: Preserve the full-bleed crop, the diagonal irregular black fissure from lower left to upper right, and the exact placement, scale and direction of all existing filament structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.
+
+08-multicolour-opal | Plasma river | Opal
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour study.
+Input images: Image 1 is the edit target; its completed solar composition and fine texture are locked.
+Primary request: Apply this multicolour colour treatment only: A subtle luminous multicolour opalescent grade: a deep graphite and navy foundation, with softly pearlescent mint, dusty lavender, pale rose and warm ivory woven through the existing fine solar filaments and magnetic whirlpool highlights. Keep the broad shadow masses dark and the diagonal channel pure black, so these restrained pastel colours emerge like fine interference colours from the texture. All four hue families should be visibly present, harmoniously overlapping with no hard boundaries. Delicate, fluid, photographic, opalescent. Avoid all-over washed-out white, rainbow stripes, glitter, neon and changing the plasma into fabric or actual gemstones.
+Composition invariants: Preserve the full-bleed crop, the diagonal irregular black fissure from lower left to upper right, and the exact placement, scale and direction of all existing filament structures.
+Preserve: Exact original landscape aspect ratio, silhouette, crop, negative space, organic fine plasma texture, dark coronal holes, and placement of every glow and magnetic swirl. Keep photographic solar character. Change only colour grading and the slight tonal restraint necessary for the intended palette.
+Polish: Smooth blended hues, fine tonal separation, rich shadows, controlled highlight roll-off and elegant quiet glow. Preserve detail and avoid banding.
+Constraints: One edge-to-edge wallpaper. No text, labels, border, montage, mockup, stars, planets, new surface patterns, new light beams, lens flare or unrelated objects. Do not shift the frame or create a centred circle.

@@ -5,3 +5,5 @@ aia_193.xml
 __pycache__/
 .venv/
 .ruff_cache/
+
+build/

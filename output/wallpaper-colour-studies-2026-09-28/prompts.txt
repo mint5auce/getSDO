@@ -1,0 +1,135 @@
+Solar wallpaper colour studies
+Tool: built-in imagegen
+Twelve colour edits of the three original wallpaper compositions.
+
+01-solar-horizon-glacial-cyan
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A cool glacial cyan treatment: deepest coloured shadows are midnight blue and petrol teal; midtones are rich ocean blue and turquoise; fine bright filaments and corona are icy cyan with sparing pale blue-white highlights. The original black regions remain pure black. Entirely cool, with no orange or yellow. Refined luminous texture, not excessively neon.
+Composition invariants: Keep the broad shallow solar horizon in the lower half, cropped beyond both sides and bottom, the black upper half, and the locations of every dark surface feature and luminous loop.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+02-coronal-edge-glacial-cyan
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A cool glacial cyan treatment: deepest coloured shadows are midnight blue and petrol teal; midtones are rich ocean blue and turquoise; fine bright filaments and corona are icy cyan with sparing pale blue-white highlights. The original black regions remain pure black. Entirely cool, with no orange or yellow. Refined luminous texture, not excessively neon.
+Composition invariants: Keep the narrow solar arc along the right-hand edge, the exact edge curvature, the large black left two thirds, and the positions and shapes of every coronal loop and dark fissure.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+03-plasma-river-glacial-cyan
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A cool glacial cyan treatment: deepest coloured shadows are midnight blue and petrol teal; midtones are rich ocean blue and turquoise; fine bright filaments and corona are icy cyan with sparing pale blue-white highlights. The original black regions remain pure black. Entirely cool, with no orange or yellow. Refined luminous texture, not excessively neon.
+Composition invariants: Keep the full-bleed solar macro texture, the jagged diagonal black channel running from lower left to upper right, and the positions, sizes and directions of all magnetic whirlpools.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+01-solar-horizon-ultraviolet
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A deep ultraviolet treatment: deepest coloured shadows are inky indigo; midtones are saturated royal violet and amethyst; bright filaments and corona are luminous lavender with sparing very pale lilac highlights. The original black regions remain pure black. A coherent violet family, no orange, yellow, cyan, rainbow or hot pink. Rich, mysterious and elegant.
+Composition invariants: Keep the broad shallow solar horizon in the lower half, cropped beyond both sides and bottom, the black upper half, and the locations of every dark surface feature and luminous loop.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+02-coronal-edge-ultraviolet
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A deep ultraviolet treatment: deepest coloured shadows are inky indigo; midtones are saturated royal violet and amethyst; bright filaments and corona are luminous lavender with sparing very pale lilac highlights. The original black regions remain pure black. A coherent violet family, no orange, yellow, cyan, rainbow or hot pink. Rich, mysterious and elegant.
+Composition invariants: Keep the narrow solar arc along the right-hand edge, the exact edge curvature, the large black left two thirds, and the positions and shapes of every coronal loop and dark fissure.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+03-plasma-river-ultraviolet
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A deep ultraviolet treatment: deepest coloured shadows are inky indigo; midtones are saturated royal violet and amethyst; bright filaments and corona are luminous lavender with sparing very pale lilac highlights. The original black regions remain pure black. A coherent violet family, no orange, yellow, cyan, rainbow or hot pink. Rich, mysterious and elegant.
+Composition invariants: Keep the full-bleed solar macro texture, the jagged diagonal black channel running from lower left to upper right, and the positions, sizes and directions of all magnetic whirlpools.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+01-solar-horizon-crimson
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A vivid crimson treatment: deepest coloured shadows are black cherry and oxblood; midtones are rich ruby red and scarlet; bright filaments and corona are coral red with sparing very pale warm rose highlights. The original black regions remain pure black. This must read distinctly RED, with no golden yellow or orange-dominant areas. Dramatic controlled luminosity, retaining fine tonal detail.
+Composition invariants: Keep the broad shallow solar horizon in the lower half, cropped beyond both sides and bottom, the black upper half, and the locations of every dark surface feature and luminous loop.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+02-coronal-edge-crimson
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A vivid crimson treatment: deepest coloured shadows are black cherry and oxblood; midtones are rich ruby red and scarlet; bright filaments and corona are coral red with sparing very pale warm rose highlights. The original black regions remain pure black. This must read distinctly RED, with no golden yellow or orange-dominant areas. Dramatic controlled luminosity, retaining fine tonal detail.
+Composition invariants: Keep the narrow solar arc along the right-hand edge, the exact edge curvature, the large black left two thirds, and the positions and shapes of every coronal loop and dark fissure.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+03-plasma-river-crimson
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A vivid crimson treatment: deepest coloured shadows are black cherry and oxblood; midtones are rich ruby red and scarlet; bright filaments and corona are coral red with sparing very pale warm rose highlights. The original black regions remain pure black. This must read distinctly RED, with no golden yellow or orange-dominant areas. Dramatic controlled luminosity, retaining fine tonal detail.
+Composition invariants: Keep the full-bleed solar macro texture, the jagged diagonal black channel running from lower left to upper right, and the positions, sizes and directions of all magnetic whirlpools.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+01-solar-horizon-silver
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A strictly neutral silver monochrome treatment: pure black negative space and deepest shadows, graphite and charcoal darker textures, luminous silver-grey midtones and restrained platinum-white magnetic filaments and corona. All pixels visually neutral grayscale, no blue, sepia or coloured tint. Rich silvery tonal separation, refined photographic contrast, luminous detail without clipping.
+Composition invariants: Keep the broad shallow solar horizon in the lower half, cropped beyond both sides and bottom, the black upper half, and the locations of every dark surface feature and luminous loop.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+02-coronal-edge-silver
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A strictly neutral silver monochrome treatment: pure black negative space and deepest shadows, graphite and charcoal darker textures, luminous silver-grey midtones and restrained platinum-white magnetic filaments and corona. All pixels visually neutral grayscale, no blue, sepia or coloured tint. Rich silvery tonal separation, refined photographic contrast, luminous detail without clipping.
+Composition invariants: Keep the narrow solar arc along the right-hand edge, the exact edge curvature, the large black left two thirds, and the positions and shapes of every coronal loop and dark fissure.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.
+
+03-plasma-river-silver
+
+Use case: style-transfer
+Asset type: widescreen desktop wallpaper colour variant.
+Input images: Image 1 is the edit target. It is an already composed wallpaper; its framing and all visual forms are locked.
+Primary request: Apply only the following colour treatment to the attached wallpaper: A strictly neutral silver monochrome treatment: pure black negative space and deepest shadows, graphite and charcoal darker textures, luminous silver-grey midtones and restrained platinum-white magnetic filaments and corona. All pixels visually neutral grayscale, no blue, sepia or coloured tint. Rich silvery tonal separation, refined photographic contrast, luminous detail without clipping.
+Composition invariants: Keep the full-bleed solar macro texture, the jagged diagonal black channel running from lower left to upper right, and the positions, sizes and directions of all magnetic whirlpools.
+Preservation: Keep exactly the original landscape aspect ratio, crop, scale, silhouette, negative space, fine plasma texture, dark coronal holes, corona structure, and original luminance hierarchy. This is a colour grade of the existing picture. Match its intricate organic solar filaments as closely as possible.
+Polish: Smooth colour transitions, deep clean black, clear shadow detail, controlled bright highlights, no banding. Preserve the original sharpness and photographic character.
+Constraints: One finished edge-to-edge wallpaper. No new objects, new plasma features, starfield, labels, text, borders, montage, mockup or lens flare. Do not alter the composition or turn the plasma into terrestrial terrain or generic flames.

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solar Horizon upscale review</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui;background:#0b1215;color:#d9e4e1}body{margin:0}main{max-width:1250px;margin:40px auto;padding:0 24px}h1{font-weight:500;font-size:30px}h2{font-size:21px;font-weight:500;margin-top:36px}p{color:#aebfbd;line-height:1.6;max-width:850px}nav,.controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}button,select{font:inherit;padding:10px 15px;border:1px solid #527276;border-radius:5px;background:#101e22;color:inherit;cursor:pointer}button[aria-pressed=true]{background:#bccfca;color:#102023}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #80c6c5;outline-offset:3px}img,video{display:block;width:100%;background:#000}figure{margin:0}figcaption{margin:10px 0 20px;color:#aebfbd}a{color:#a9d2ce}.pixel{width:auto;max-width:none}.scroll{overflow:auto;border:1px solid #304549;margin:16px 0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.grid img{width:auto;max-width:none}.grid .scroll{margin:0}.grid label{display:block;margin-bottom:10px}.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.videos label{display:block;margin-bottom:10px}@media(max-width:800px){.grid,.videos{grid-template-columns:1fr}}.note{padding:16px;border-left:2px solid #638e90;background:#101d20}
+</style>
+<main>
+<h1>Solar Horizon upscale review</h1>
+<p>The exact active NASA SDO/AIA 193 Å observation, 21 September 2026 at 15:38:05 UTC. Identical teal/pewter grade, restrained corona, footer mask and clockwise 20-minute rotation. Nothing has been applied to the live wallpaper.</p>
+<nav aria-label="Comparison variant">
+<button data-variant="A" aria-pressed="true">A · Current 4096</button>
+<button data-variant="B" aria-pressed="false">B · Non-AI 8192</button>
+<button data-variant="C" aria-pressed="false">C · Real-ESRGAN 8192</button>
+</nav>
+<div class="controls"><label>Rotation phase <select id="phase"><option value="0600">180°</option><option value="0000">0°</option><option value="0150">45°</option><option value="0300">90°</option><option value="0450">135°</option><option value="0750">225°</option><option value="0900">270°</option><option value="1050">315°</option></select></label><button id="pixels" aria-pressed="false">Show 100% pixels</button></div>
+<figure><div class="scroll"><img id="scene" src="frames/A-0600.png" alt="Teal solar horizon comparison"></div><figcaption id="caption">A · Current texture and native Metal sampling</figcaption></figure>
+<p><a id="frame-link" href="frames/A-0600.png">Open full-size frame</a> · <a id="texture-link" href="scenes/A/texture.png">Open full-disc texture</a> · <a href="scene-snapshot.json">Pinned source</a> · <a href="provenance.json">Provenance</a> · <a href="metal-measurements.json">Metal allocations</a> · <a href="report.md">Report</a></p>
+<h2>Matching detail crops at 100%</h2>
+<p>Each PNG is a direct crop of the 2,940 × 1,912 backing-pixel frame. These panels compensate for the display scale so one image pixel maps to one physical pixel. Scroll inside each panel to inspect the same region.</p>
+<div class="controls"><label>Region <select id="detail"><option value="loops">Coronal loops</option><option value="quiet">Quiet texture</option><option value="dark-boundary">Dark boundary</option><option value="limb">Solar limb</option><option value="band-0000">Outer band 0°</option><option value="band-0150">Outer band 45°</option><option value="band-0300">Outer band 90°</option><option value="band-0450">Outer band 135°</option><option value="band-0600">Outer band 180°</option><option value="band-0750">Outer band 225°</option><option value="band-0900">Outer band 270°</option><option value="band-1050">Outer band 315°</option></select></label></div>
+<div class="grid" id="details"></div>
+<h2>Constant-speed rotation</h2>
+<p id="motion-label">12 seconds at the intended speed, starting at 180°. The underlying full turn takes 1,200 seconds. All three clips share the same phase and timing.</p>
+<div class="controls"><button id="play">Play comparisons together</button><button id="pause">Pause</button><button id="speed" aria-pressed="false">Switch to 60× inspection</button></div>
+<div class="videos" id="videos"></div>
+<p class="note">AI detail is a visual reconstruction, not newly recovered scientific evidence. Judge calmness, loop shapes, limb halos and motion stability as well as sharpness. The inspection clips complete one turn in 20 seconds and are explicitly accelerated 60×.</p>
+</main>
+<script>
+const names={A:'Current 4096',B:'Lanczos + mild sharpening',C:'Real-ESRGAN 4× to 2×'};let variant='A',accelerated=false;
+const q=s=>document.querySelector(s);
+q('#details').innerHTML=Object.entries(names).map(([k,n])=>`<div><label>${k} · ${n}</label><div class="scroll"><img data-detail="${k}" src="details/${k}-loops.png" alt="${n} detail crop"></div><a data-detail-link="${k}" href="details/${k}-loops.png">Open crop</a></div>`).join('');
+q('#videos').innerHTML=Object.entries(names).map(([k,n])=>`<div><label>${k} · ${n}</label><video data-video="${k}" controls muted playsinline preload="metadata" src="animation/${k}-real-speed.mp4"></video></div>`).join('');
+function physical(img){if(img.naturalWidth)img.style.width=`${img.naturalWidth/window.devicePixelRatio}px`}
+document.querySelectorAll('[data-detail]').forEach(i=>{i.onload=()=>physical(i);if(i.complete)physical(i)});
+function update(){const p=q('#phase').value;q('#scene').src=`frames/${variant}-${p}.png`;q('#frame-link').href=q('#scene').src;q('#texture-link').href=`scenes/${variant}/texture.png`;q('#caption').textContent=`${variant} · ${names[variant]} · ${Number(p)/1200*360}°`;document.querySelectorAll('[data-variant]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.variant===variant)))}
+document.querySelectorAll('[data-variant]').forEach(b=>b.onclick=()=>{variant=b.dataset.variant;update()});q('#phase').onchange=update;
+q('#scene').onload=()=>{if(q('#scene').classList.contains('pixel'))physical(q('#scene'))};
+q('#pixels').onclick=()=>{const active=q('#scene').classList.toggle('pixel');q('#scene').style.width=active?`${q('#scene').naturalWidth/window.devicePixelRatio}px`:'';q('#pixels').setAttribute('aria-pressed',String(active));q('#pixels').textContent=active?'Fit to page':'Show 100% pixels'};
+q('#detail').onchange=()=>document.querySelectorAll('[data-detail]').forEach(i=>{i.src=`details/${i.dataset.detail}-${q('#detail').value}.png`;q(`[data-detail-link="${i.dataset.detail}"]`).href=i.src});
+const videos=[...document.querySelectorAll('video')];q('#play').onclick=()=>{videos.forEach(v=>v.currentTime=0);Promise.all(videos.map(v=>v.play())).catch(()=>{})};q('#pause').onclick=()=>videos.forEach(v=>v.pause());
+q('#speed').onclick=()=>{accelerated=!accelerated;videos.forEach(v=>{v.pause();v.src=`animation/${v.dataset.video}-${accelerated?'60x-inspection':'real-speed'}.mp4`});q('#speed').setAttribute('aria-pressed',String(accelerated));q('#speed').textContent=accelerated?'Return to real speed':'Switch to 60× inspection';q('#motion-label').textContent=accelerated?'ACCELERATED INSPECTION · 60× speed. One full rotation in 20 seconds. This is not the intended desktop speed.':'12 seconds at the intended speed, starting at 180°. The underlying full turn takes 1,200 seconds. All three clips share the same phase and timing.'};
+</script>
+</html>

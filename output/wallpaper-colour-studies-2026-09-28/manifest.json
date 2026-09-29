@@ -1,0 +1,98 @@
+[
+  {
+    "composition": "Solar horizon",
+    "palette": "Glacial cyan",
+    "filename": "01-solar-horizon-glacial-cyan.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "3eb983e4eaa941eae1e07e4a34999e11a0be99a7ee6da5a962c79d8b5e259caf"
+  },
+  {
+    "composition": "Coronal edge",
+    "palette": "Glacial cyan",
+    "filename": "02-coronal-edge-glacial-cyan.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "e96f08deccea15fad534461223c28310340afd351dd10f3bcbfac32c9e5b174e"
+  },
+  {
+    "composition": "Plasma river",
+    "palette": "Glacial cyan",
+    "filename": "03-plasma-river-glacial-cyan.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "38f3b1a1c7663eb9d8b6d803fc03d8a1461affac8fa65947d35c7d9c76c2db7b"
+  },
+  {
+    "composition": "Solar horizon",
+    "palette": "Ultraviolet",
+    "filename": "01-solar-horizon-ultraviolet.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "f4dd5fcaad4f7eb8530c05aa5f9bc9454a683f7c21f4929bbe8d9a909d4e329a"
+  },
+  {
+    "composition": "Coronal edge",
+    "palette": "Ultraviolet",
+    "filename": "02-coronal-edge-ultraviolet.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "df029f5e47d0b3373c8e7e7f83fc5834cc20fe15bf0b08baf3490bfbf5bbcff8"
+  },
+  {
+    "composition": "Plasma river",
+    "palette": "Ultraviolet",
+    "filename": "03-plasma-river-ultraviolet.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "7b79a85c22cd89374a988e4ec60e48b7e1029c823a8a6f7d1abc02057e4b767c"
+  },
+  {
+    "composition": "Solar horizon",
+    "palette": "Crimson",
+    "filename": "01-solar-horizon-crimson.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "129f07eebc302818ac27e4c598a376947ab3dfaa8d612047be31a0d4087594db"
+  },
+  {
+    "composition": "Coronal edge",
+    "palette": "Crimson",
+    "filename": "02-coronal-edge-crimson.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "8fe194e8ce108a695efb476c78be875fb40ad922f5e665748cb5c59ebe821c51"
+  },
+  {
+    "composition": "Plasma river",
+    "palette": "Crimson",
+    "filename": "03-plasma-river-crimson.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "ddf2452dbcb1d47865caf60248766ca64c52353bcf152b3a8908f2d866a05cf5"
+  },
+  {
+    "composition": "Solar horizon",
+    "palette": "Silver monochrome",
+    "filename": "01-solar-horizon-silver.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "b5a413ff4d91c0aa13d54c7d070d7787b3f4b9fe6caae095e2d0fdba58cbe0d4"
+  },
+  {
+    "composition": "Coronal edge",
+    "palette": "Silver monochrome",
+    "filename": "02-coronal-edge-silver.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "dbf506ba119fd1dca806e301051f9ea52a678d923d258a983fc4052aea2b4d2e"
+  },
+  {
+    "composition": "Plasma river",
+    "palette": "Silver monochrome",
+    "filename": "03-plasma-river-silver.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "2de7b8671e1f073248dffbd4e81c5768953f75924916b16cbab8f65c9ec6ee93"
+  }
+]

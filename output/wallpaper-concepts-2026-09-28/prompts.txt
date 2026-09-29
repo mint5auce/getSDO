@@ -1,0 +1,37 @@
+Solar wallpaper concept prompts
+Tool: built-in imagegen
+Source: user-supplied SDO/AIA solar photograph
+Outputs: generated artistic reinterpretations; native resolution 1672 x 941 pixels.
+
+01-solar-horizon | Solar horizon
+
+Use case: compositing
+Asset type: premium widescreen desktop wallpaper, 16:9 landscape, ideally 3840 x 2160.
+Input images: Image 1 is the edit target and source of all solar texture, amber coloration, coronal glow and intricate magnetic filaments.
+Primary request: Reframe this Sun image into an immense, cinematic SOLAR HORIZON. Enlarge and crop it dramatically so the Sun extends far beyond both side edges and the bottom of the canvas. We see only a shallow, gently curving upper limb traversing the entire width, with richly detailed solar surface below and spacious pure black above. The horizon should peak around 58 percent down the image and fall to about 78 percent at the edges, an immense scale, never a visible complete circle.
+Composition: approximately upper 55 percent is quiet near-black negative space suitable for desktop icons. The bottom portion is detailed amber solar plasma. A very subtle corona traces the curve, with a small concentration of luminous magnetic loops toward the right third, balanced by darker textured surface toward the left. Make the image beautiful as a composition in its own right.
+Style: high fidelity solar telescope imagery, refined photographic realism, true fine wispy filaments and organic turbulence derived closely from the original. Restrained glow, deep blacks, warm burnt amber and pale gold highlights exactly in the source palette.
+Invariants: preserve the source's solar character, natural complexity, black coronal holes, realistic edge and amber monochrome.
+Constraints: one finished wallpaper, edge to edge. Remove the original footer lettering and timestamp. No text, labels, border, panel, mockup, starfield, planets, lens flare, Earth landscape, clouds, cartoon flames or centered circular Sun. Do not simply stretch the original; use enlarged reframing and coherent texture extension where needed.
+
+02-coronal-edge | Coronal edge
+
+Use case: compositing
+Asset type: premium widescreen desktop wallpaper, 16:9 landscape, ideally 3840 x 2160.
+Input images: Image 1 is the edit target and source for the solar plasma texture, coronal glow, amber palette and magnetic filaments.
+Primary request: Create a striking, minimal CORONAL EDGE wallpaper by moving almost the entire enormous Sun outside the right edge of the canvas. Show only a narrow, luminous curved slice of its actual surface intruding along the right edge. The curve enters at roughly 89 percent across at the top, bows left to roughly 69 percent across at mid-height, and leaves at roughly 91 percent across at the bottom. The solar material is to the RIGHT of that edge and cropped by the image boundaries. This is a crop of an immense Sun, not an eclipse and not a ring.
+Composition: left two thirds is deep immaculate black negative space. The right third contains a sculptural, finely detailed amber arc, glowing fine corona extending delicately into the black, and richly textured darker amber solar surface disappearing out of frame on the right. A few small natural wispy plasma loops along the limb are sufficient. Keep the black negative space clean and dominant. The luminous edge should be exquisitely fine and organic, not a fat neon line.
+Style: high fidelity solar telescope image adapted with exceptional editorial restraint. Deep black, bronze, amber and soft gold drawn from the attached photograph. Detailed threads of coronal plasma, modest glow, controlled highlights.
+Invariants: reuse the reference solar identity and texture with its real organic irregularity, not generic fire or smooth 3D noise.
+Constraints: one complete wallpaper, edge to edge. No full disc, centered subject, eclipse object, stars, unrelated objects, typography, timestamp, logo, border, mockup, heavy bloom, lens flare or gradient banding. Remove the original caption.
+
+03-plasma-river | Plasma river
+
+Use case: compositing
+Asset type: striking abstract widescreen desktop wallpaper, 16:9 landscape, ideally 3840 x 2160.
+Input images: Image 1 is the edit target and source for the enlarged solar surface, distinctive elongated dark coronal hole, amber plasma texture and magnetic swirls.
+Primary request: Transform the photograph into a FULL-BLEED MACRO composition of the solar surface, so no circumference or outer space is visible. Crop, enlarge and reorient the long jagged dark coronal hole from the lower half of the supplied image into a broad, irregular diagonal river of near-black, flowing from the lower left through the center toward the upper right. Surround this dark sinuous channel with intricate wisps, flowing filaments and magnetic whirlpools from the original Sun. The result should read as both real solar imagery and a magnificent abstract amber ink painting.
+Composition: asymmetric, a strong diagonal gesture across the entire wide canvas. Broad dark quiet pools occupy about 40 percent, balanced against detailed luminous plasma banks. Restrained pale gold highlights cluster in the upper left and lower right, avoiding a bright central focal point. Preserve large flowing forms and fine local detail without becoming uniformly busy.
+Style: photographic solar telescope texture with an elegant dark fine-art finish; luminous amber, burnt bronze, black and sparing soft gold, all derived from the original image. Natural irregularity, fine silky plasma threads and rich shadow depth. Dark enough to remain practical as a desktop background.
+Invariants: retain the source image's recognizable magnetic filament texture and organic coronal-hole shapes. This is a creative reframing of the Sun, not actual terrestrial lava or rocks.
+Constraints: one finished image, edge to edge. No visible solar disc, no circular frame, no stars, objects, geographic terrain, text, timestamp, logo, border, mockup, oil-paint impasto, synthetic repeated swirls, oversharpening or blown-out highlights. Remove the original footer.

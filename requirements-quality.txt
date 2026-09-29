@@ -1,0 +1,4 @@
+# Review-only FITS and sampling comparison tools; not part of the daily runtime.
+-r requirements-wallpaper.txt
+astropy>=7,<9
+scipy>=1.15,<2

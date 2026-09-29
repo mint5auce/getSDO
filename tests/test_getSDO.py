@@ -1,6 +1,7 @@
 """Exercise the CLI against a real local HTTP server, without NASA access."""
 
 import datetime as dt
+import importlib.util
 import os
 import subprocess
 import sys
@@ -90,10 +91,18 @@ class DownloadTests(unittest.TestCase):
         timestamp = timestamp or self.timestamp
         return f"{view}_{timestamp:%Y%m%d_%H%M%S}_{resolution}_{getSDO.VIEWS[view]}.jpg"
 
-    def cli(self, *args, default_output=False):
+    def cli(self, *args, default_output=False, without_site_packages=False):
         options = [] if default_output else ["--output", str(self.output)]
         return subprocess.run(
-            [sys.executable, "-c", RUNNER, self.base_url, *options, *args],
+            [
+                sys.executable,
+                *(["-S"] if without_site_packages else []),
+                "-c",
+                RUNNER,
+                self.base_url,
+                *options,
+                *args,
+            ],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -303,12 +312,127 @@ class DownloadTests(unittest.TestCase):
             ["--timeout", "nan"],
             ["--timeout", "inf"],
             ["--timeout", "abc"],
+            ["--wallpaper", "0x1080"],
+            ["--wallpaper", "1920"],
+            ["--wallpaper", "999999x999999"],
+            ["--wallpaper", "8192x8192"],
+            ["--wallpaper", "8192x64"],
+            ["--crop", "existing.jpg"],
+            ["--wallpaper-output", "somewhere"],
         ):
             with self.subTest(args=args):
                 result = self.cli(*args)
                 self.assertEqual(result.returncode, 2)
                 self.assertNotIn("Traceback", result.stderr)
                 self.assertFalse(self.requests)
+
+    def test_download_mode_still_runs_without_third_party_packages(self):
+        result = self.cli(
+            "--views", "aia_193", "--resolution", "512", without_site_packages=True
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Downloaded:", result.stdout)
+
+    def test_missing_crop_dependencies_fail_before_network_access(self):
+        result = self.cli("--wallpaper", "640x360", without_site_packages=True)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("requires Pillow and NumPy", result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+        self.assertFalse(self.requests)
+        self.assertFalse(self.output.exists())
+
+    @unittest.skipUnless(
+        importlib.util.find_spec("PIL") and importlib.util.find_spec("numpy"),
+        "optional wallpaper packages not installed",
+    )
+    def test_download_and_crop_repeat_run_and_missing_wallpaper(self):
+        from test_wallpaper import solar_fixture
+
+        source = self.work / "solar.jpg"
+        solar_fixture().save(source)
+        remote_path = self.add_observation("0193")
+        self.responses[remote_path] = (
+            200,
+            {"Content-Type": "image/jpeg"},
+            source.read_bytes(),
+        )
+        args = ("--views", "aia_193", "--resolution", "512", "--wallpaper", "640x360")
+        result = self.cli(*args)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Created wallpaper:", result.stdout)
+        target = next(
+            (self.work / "home/Library/Caches/getSDO/wallpapers").glob("*.jpg")
+        )
+        original = self.output / self.filename(view="aia_193")
+        self.assertEqual(original.read_bytes(), source.read_bytes())
+        self.assertFalse((self.output / "wallpapers").exists())
+        self.requests.clear()
+        again = self.cli(*args)
+        self.assertEqual(again.returncode, 0, again.stderr)
+        self.assertIn("Skipped wallpaper:", again.stdout)
+        self.assertEqual(self.requests, ["/assets/img/latest/times0193.txt"])
+        target.unlink()
+        repaired = self.cli(*args)
+        self.assertEqual(repaired.returncode, 0, repaired.stderr)
+        self.assertIn("Created wallpaper:", repaired.stdout)
+        self.assertTrue(target.is_file())
+
+    @unittest.skipUnless(
+        importlib.util.find_spec("PIL") and importlib.util.find_spec("numpy"),
+        "optional wallpaper packages not installed",
+    )
+    def test_offline_crop_and_invalid_input_never_contact_nasa(self):
+        from test_wallpaper import solar_fixture
+
+        source = self.work / "solar original.png"
+        solar_fixture().save(source)
+        result = self.cli("--crop", str(source), "--wallpaper", "640x360")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Created wallpaper:", result.stdout)
+        self.assertFalse(self.requests)
+        source.write_bytes(b"not an image")
+        failed = self.cli("--crop", str(source), "--wallpaper", "640x360")
+        self.assertEqual(failed.returncode, 1)
+        self.assertNotIn("Traceback", failed.stderr)
+        self.assertFalse(self.requests)
+
+    @unittest.skipUnless(
+        importlib.util.find_spec("PIL") and importlib.util.find_spec("numpy"),
+        "optional wallpaper packages not installed",
+    )
+    def test_failed_crop_keeps_download_and_continues_with_other_views(self):
+        from test_wallpaper import solar_fixture
+
+        source = self.work / "solar.jpg"
+        solar_fixture().save(source)
+        remote_path = self.add_observation("0193")
+        self.responses[remote_path] = (
+            200,
+            {"Content-Type": "image/jpeg"},
+            source.read_bytes(),
+        )
+        result = self.cli(
+            "--views",
+            "aia_171",
+            "aia_193",
+            "--resolution",
+            "512",
+            "--wallpaper",
+            "640x360",
+        )
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("Error: aia_171:", result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+        self.assertIn("Created wallpaper:", result.stdout)
+        self.assertTrue((self.output / self.filename()).is_file())
+        self.assertEqual(
+            len(
+                list(
+                    (self.work / "home/Library/Caches/getSDO/wallpapers").glob("*.jpg")
+                )
+            ),
+            1,
+        )
 
     def test_script_entry_point_help_does_not_download(self):
         result = subprocess.run(

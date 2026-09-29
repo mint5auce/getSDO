@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Teal / pewter",
+    "group": "Subtle duotone",
+    "composition": "Coronal edge",
+    "filename": "01-duotone-teal-pewter.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "6f11359f6a888366ed1fba2bf319d633bed738abfa1f566184e7b3f3461ef083"
+  },
+  {
+    "name": "Blue / dusty rose",
+    "group": "Subtle duotone",
+    "composition": "Solar horizon",
+    "filename": "02-duotone-blue-rose.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "1a7f863a1707fd27116788250abc0af530147e3e146780e7eaaef9589ed9a968"
+  },
+  {
+    "name": "Graphite / champagne",
+    "group": "Subtle duotone",
+    "composition": "Plasma river",
+    "filename": "03-duotone-graphite-champagne.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "6b32d12716e5486ef3cf7e134a7026c5a6e6a877199395571eb8d1137f451db3"
+  },
+  {
+    "name": "Plum / muted copper",
+    "group": "Subtle duotone",
+    "composition": "Coronal edge",
+    "filename": "04-duotone-plum-copper.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "171812cdc650f2b476d55dc048206663a6352ee8589a0ebef4986270f56d7ebe"
+  },
+  {
+    "name": "Aurora",
+    "group": "Multicolour",
+    "composition": "Solar horizon",
+    "filename": "05-multicolour-aurora.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "e828742ed5fab48bd97f21486ae4aaa86630179d4b1e1f3c07abc5eab34a271a"
+  },
+  {
+    "name": "Prismatic limb",
+    "group": "Multicolour",
+    "composition": "Coronal edge",
+    "filename": "06-multicolour-prismatic-limb.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "cfadeeaba24d0b19130745d163098edefc773c206fa92a172b6d38208f290962"
+  },
+  {
+    "name": "Mineral currents",
+    "group": "Multicolour",
+    "composition": "Plasma river",
+    "filename": "07-multicolour-mineral.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "0faf317eb4fa8f9f7366c51f1de7d24be4e651d3e812d952e0f0282bdba681de"
+  },
+  {
+    "name": "Opal",
+    "group": "Multicolour",
+    "composition": "Plasma river",
+    "filename": "08-multicolour-opal.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "991cc1508935c0517f28427b74bd0b091d5f6416fadcb5c4781707c2597df925"
+  }
+]
