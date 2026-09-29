@@ -1,6 +1,9 @@
 # Solar Horizon
 
 Download NASA solar images, create animated macOS desktop and screensaver.
+
+![Hand-drawn Solar Horizon desktop and observation satellite](assets/solar-horizon.png)
+
 Requires Python 3.11 or newer.
 
 ## Download images
