@@ -1,6 +1,6 @@
 # Solar Horizon
 
-Download NASA solar images, create plasma wallpapers, or run an animated macOS desktop and screensaver.
+Download NASA solar images, create animated macOS desktop and screensaver.
 Requires Python 3.11 or newer.
 
 ## Download images
